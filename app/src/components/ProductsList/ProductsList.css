@@ -1,0 +1,38 @@
+/* Container for the entire products list */
+.products-container {
+    background-color: white;
+}
+
+/* Wrapper for the content with proper spacing */
+.products-wrapper {
+    margin: 0 auto;
+    max-width: 1120px; /* Equivalent to Tailwind's max-w-7xl */
+    padding: 64px 16px; /* Equivalent to px-4 py-16 */
+}
+
+@media (min-width: 640px) {
+    .products-wrapper {
+        padding: 96px 24px; /* Equivalent to sm:px-6 sm:py-24 */
+    }
+}
+
+/* Grid layout for products */
+.products-grid {
+    margin-top: 24px; /* Equivalent to mt-6 */
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* 1 column by default */
+    gap: 40px 24px; /* Equivalent to gap-x-6 gap-y-10 */
+}
+
+@media (min-width: 640px) {
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns for small screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4 columns for large screens */
+        column-gap: 32px; /* Equivalent to xl:gap-x-8 */
+    }
+}

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import ProductsList from './ProductsList';
+import ProductsList from './ProductsList/ProductsList';
 
 const BACKEND_SERVER_URL = "http://localhost:8080"
 
 function ProductsCrud({ customerJWTToken }) {
+    const [products, setProducts] = useState([]);
+
     useEffect(() => {
         const getOptions = {
             method: 'GET',
@@ -20,13 +22,24 @@ function ProductsCrud({ customerJWTToken }) {
             .catch(err => console.log('Error::: ', err.message));
     }, []);
 
-    function handleGettingProducts(res) {
-        console.log('res');
-    }
+    const handleGettingProducts = response => {
+        setTimeout(async () => {
+            const { data, err } = await response.json();
+
+            // Should show msg err
+            if (err) {
+                console.log('Error:: ', err);
+                return
+            }
+
+            // Setting data states and vars
+            if (data) setProducts(data.data);
+        }, 100);
+    };
 
     return (
         <ProductsList
-            
+            products={products}
         />
     )
 }

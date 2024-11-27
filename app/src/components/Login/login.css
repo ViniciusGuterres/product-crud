@@ -1,4 +1,3 @@
-/* General Layout */
 .login-container {
     background-color: #f9fafb;
     display: flex;
@@ -33,7 +32,6 @@
     text-align: center;
 }
 
-/* Form Styles */
 .login-form {
     display: flex;
     flex-direction: column;
@@ -65,7 +63,6 @@
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
 }
 
-/* Button Styles */
 .btn-primary {
     background-color: #2563eb;
     color: white;
@@ -86,7 +83,6 @@
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
 }
 
-/* Sign-up Link */
 .signup-link {
     font-size: 0.875rem;
     text-align: center;

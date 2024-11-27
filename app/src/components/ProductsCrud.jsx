@@ -51,6 +51,15 @@ function ProductsCrud({ customerJWTToken }) {
         return (
             <button
                 onClick={handleClickChangeCrudMode}
+                style={{
+                    marginTop: '50px',
+                    padding: '10px',
+                    cursor: 'pointer',
+                    backgroundColor: '#e4ff08bd',
+                    borderRadius: '10px',
+                    fontSize: '14px',
+                    border: '1px solid #00000045',
+                }}
             >
                 {buttonName}
             </button>

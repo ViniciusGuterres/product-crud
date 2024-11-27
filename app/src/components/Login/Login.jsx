@@ -69,6 +69,7 @@ function Login() {
                                     required
                                     name="email"
                                     type="email"
+                                    style={{ width: 'auto' }}
                                 />
                             </div>
                             <div className="form-group">
@@ -81,6 +82,7 @@ function Login() {
                                     placeholder="••••••••"
                                     className="form-input"
                                     required
+                                    style={{ width: 'auto' }}
                                 />
                             </div>
                             <button

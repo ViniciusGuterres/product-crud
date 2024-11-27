@@ -4,4 +4,4 @@ Rodar o projeto steps:
 
 2°) npm start
 
-3°) Levantar o servidor: https://github.com/ViniciusGuterres/ecommerce-api-node
+3°) Levantar o backend: https://github.com/ViniciusGuterres/ecommerce-api-node

@@ -10,7 +10,7 @@ function ProductsCrud({ customerJWTToken }) {
             // body: jsonData,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${CUSTOMER_TOKEN}`,
+                'Authorization': `Bearer ${customerJWTToken}`,
             },
         };
 

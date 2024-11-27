@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ProductsList from './ProductsList/ProductsList';
+import CreateProduct from './CreateProduct/CreateProduct';
 
 const BACKEND_SERVER_URL = "http://localhost:8080"
 
 function ProductsCrud({ customerJWTToken }) {
     const [crudMode, setCrudMode] = useState('list') // options: list, create
-
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ function ProductsCrud({ customerJWTToken }) {
         fetch(`${BACKEND_SERVER_URL}/products`, getOptions)
             .then(response => handleGettingProducts(response))
             .catch(err => console.log('Error::: ', err.message));
-    }, []);
+    }, [crudMode]);
 
     const handleGettingProducts = response => {
         setTimeout(async () => {
@@ -39,16 +39,39 @@ function ProductsCrud({ customerJWTToken }) {
         }, 100);
     };
 
+    const handleClickChangeCrudMode = () => {
+        const mode = crudMode === 'list' ? 'create' : 'list';
+
+        setCrudMode(mode);
+    }
+
+    const buildCrudModeButton = () => {
+        let buttonName = crudMode === 'list' ? 'Cadastrar Produto' : 'Listar Produtos';
+
+        return (
+            <button
+                onClick={handleClickChangeCrudMode}
+            >
+                {buttonName}
+            </button>
+        )
+    }
 
     return (
         <div>
-            <button>
+            {buildCrudModeButton()}
 
-            </button>
-
-            <ProductsList
-                products={products}
-            />
+            {
+                crudMode === 'list'
+                    ?
+                    <ProductsList
+                        products={products}
+                    />
+                    :
+                    <CreateProduct
+                        customerJWTToken={customerJWTToken}
+                    />
+            }
         </div>
     )
 }

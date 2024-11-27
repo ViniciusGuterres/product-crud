@@ -1,10 +1,10 @@
 import { useState } from "react";
-import settings from "../settings.js";
-import "./CreateProduct.css"; // Import the CSS file
+import settings from "../../settings.js";
+import "./CreateProduct.css";
 
 const BACKEND_SERVER_URL = settings.backendEndUrl;
 
-function CreateProduct() {
+function CreateProduct({customerJWTToken}) {
     const [formData, setFormData] = useState({
         name: "",
         price: "",
@@ -13,8 +13,6 @@ function CreateProduct() {
     });
 
     const [message, setMessage] = useState("");
-
-    const localStorageCustomerToken = localStorage.getItem("customerToken");
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -26,7 +24,7 @@ function CreateProduct() {
 
         const { name, price, description, inventory_amount } = formData;
         if (!name || !price || !description) {
-            setMessage("Please fill in all required fields.");
+            setMessage("Por favor, preencha todos os campos.");
             return;
         }
 
@@ -34,7 +32,7 @@ function CreateProduct() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${localStorageCustomerToken}`,
+                Authorization: `Bearer ${customerJWTToken}`,
             },
             body: JSON.stringify(formData),
         };
@@ -48,7 +46,8 @@ function CreateProduct() {
             const result = await response.json();
 
             if (response.ok) {
-                setMessage("Product created successfully!");
+                setMessage("Produto criado com sucesso!!");
+
                 setFormData({
                     name: "",
                     price: "",
@@ -56,10 +55,10 @@ function CreateProduct() {
                     inventory_amount: "",
                 });
             } else {
-                setMessage(`Error: ${result.err}`);
+                setMessage(`Ocorreu um erro: ${result.err}`);
             }
         } catch (error) {
-            setMessage(`Network Error: ${error.message}`);
+            setMessage(`Erro inesperado: ${error.message}`);
         }
     };
 

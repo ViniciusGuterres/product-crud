@@ -4,6 +4,8 @@ import ProductsList from './ProductsList/ProductsList';
 const BACKEND_SERVER_URL = "http://localhost:8080"
 
 function ProductsCrud({ customerJWTToken }) {
+    const [crudMode, setCrudMode] = useState('list') // options: list, create
+
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -37,10 +39,17 @@ function ProductsCrud({ customerJWTToken }) {
         }, 100);
     };
 
+
     return (
-        <ProductsList
-            products={products}
-        />
+        <div>
+            <button>
+
+            </button>
+
+            <ProductsList
+                products={products}
+            />
+        </div>
     )
 }
 
